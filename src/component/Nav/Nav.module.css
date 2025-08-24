@@ -1,0 +1,132 @@
+.Nav_wrapper{
+    width: 90%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    border: 1px solid #1e1e1e;
+    border-radius: 12px;
+    top: 50px;
+    left: 5%;
+    position: fixed;
+    box-shadow: 0 0 30px rgba(30, 30, 30, 0.18);
+    background-color: #fff;
+    z-index: 999;
+}
+.Nav_wrapper .logo a{
+    font-size: 28px;
+    color: #1e1e1e;
+    font-weight: 800;
+}
+
+.Nav_wrapper ul li{
+    display: inline-block;
+    margin: 0 15px;
+}
+.Nav_wrapper ul li a{
+    font-weight: 500;
+    color: #1e1e1e;
+}
+.Nav_wrapper ul li a:hover{
+    color: rgb(231, 76, 60 );
+}
+.nav_btns{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.nav_btns .search_wrapper{
+    width: 200px;
+    height: 38px;
+    display: flex;
+    position: relative;
+}
+.nav_btns .search_wrapper input{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: rgba(0 , 0, 0, 0.05);
+    padding: 0 30px;
+}
+.nav_btns .search_wrapper i{
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+.nav_btns .CallBtn {
+    width: 200px;
+    display: flex;
+    gap: 12px;
+}
+.nav_btns .CallBtn i{
+    font-size: 25px;
+    color: rgb(231, 76, 60 );
+}
+.nav_btns .CallBtn p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.nav_btns .CallBtn p small{
+    font-weight: 300;
+    font-size: 13px;
+    display: block;
+}
+#bars{
+    padding: 15px;
+    font-size: 18px;
+    color: #1e1e1e;
+    background-color: rgb(231, 76, 60 );
+    cursor: pointer;
+    transition: 6s;
+    display: none ;
+}
+#bars:hover{
+    background-color: #1e1e1e;
+    color: #fff;
+}
+@media screen and (max-width:1500px){
+    #bars{
+        display: block;
+    }
+    .Nav_wrapper ul{
+        position: absolute;
+        top: 125%;
+        left: 0;
+        width: 0%;
+        background-color: #fff;
+        transition: 1.6s;   
+        border-color: #1e1e1e;
+        border-style:solid ;
+        border-radius: 12px;
+        border-width: 0px;
+        overflow: hidden;
+
+    }
+    .Nav_wrapper ul li{
+        display: block;
+        margin: 15px 0;
+        padding: 8px 0;
+        padding-left: 8% !important;
+    }
+
+    .Nav_wrapper .activeMenu {
+        border-width: 1px;
+        width: 100% ;
+    }
+}
+
+@media screen and (max-width:768px){
+    .Nav_wrapper .CallBtn{
+        display: none;
+
+    }
+}
+@media screen and (max-width:580px){
+    .Nav_wrapper .CallBtn{
+        display: none;
+        
+    }  
+}
