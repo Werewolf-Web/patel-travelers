@@ -1,0 +1,12 @@
+.Memories_wrapper{
+    display: grid !important ;
+    grid-template-columns: repeat(6,1fr);
+    gap: 30px;
+}
+.Memories_wrapper .MemoriesCard{
+    width: 100%;
+    height: 380px;
+}
+.Memories_wrapper .MemoriesCard img{
+    width: 100% ;
+} 
