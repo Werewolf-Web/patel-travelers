@@ -1,12 +1,160 @@
+/* Layout */
 .Memories_wrapper{
-    display: grid !important ;
-    grid-template-columns: repeat(6,1fr);
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 24px;
+    grid-auto-flow: dense; /* fills holes automatically */
 }
+
+/* Card base */
 .Memories_wrapper .MemoriesCard{
     width: 100%;
-    height: 380px;
+    aspect-ratio: 4 / 3;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f3f3f3;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transform: translateY(10px);
+    opacity: 0;
+    animation: fadeInUp 600ms ease forwards;
 }
+
+/* Staggered entrance */
+.Memories_wrapper .MemoriesCard:nth-child(1){ animation-delay: 60ms; }
+.Memories_wrapper .MemoriesCard:nth-child(2){ animation-delay: 120ms; }
+.Memories_wrapper .MemoriesCard:nth-child(3){ animation-delay: 180ms; }
+.Memories_wrapper .MemoriesCard:nth-child(4){ animation-delay: 240ms; }
+.Memories_wrapper .MemoriesCard:nth-child(5){ animation-delay: 300ms; }
+.Memories_wrapper .MemoriesCard:nth-child(6){ animation-delay: 360ms; }
+.Memories_wrapper .MemoriesCard:nth-child(7){ animation-delay: 420ms; }
+.Memories_wrapper .MemoriesCard:nth-child(8){ animation-delay: 480ms; }
+.Memories_wrapper .MemoriesCard:nth-child(9){ animation-delay: 540ms; }
+
+/* Image styling */
 .Memories_wrapper .MemoriesCard img{
-    width: 100% ;
-} 
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 300ms ease, filter 300ms ease;
+}
+
+/* Hover interaction */
+.Memories_wrapper .MemoriesCard::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+    z-index: 1; /* below content */
+}
+.Memories_wrapper .MemoriesCard:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+.Memories_wrapper .MemoriesCard:hover img{
+    transform: scale(1.04);
+    filter: blur(2px) brightness(0.9); /* blur + dim */
+}
+.Memories_wrapper .MemoriesCard:hover::after{
+    opacity: 1; /* overlay visible on hover */
+}
+
+/* In-card details (matches JSX .content) */
+.Memories_wrapper .MemoriesCard .content{
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2; /* above overlay */
+    color: #fff;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 250ms ease, transform 250ms ease;
+    pointer-events: none; /* avoid hover flicker */
+}
+.Memories_wrapper .MemoriesCard .content h3{
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    line-height: 1.3;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.Memories_wrapper .MemoriesCard .content a,
+.Memories_wrapper .MemoriesCard .content button{
+    display: inline-block;
+    background: #ffffff;
+    color: #111;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.Memories_wrapper .MemoriesCard:hover .content{
+    opacity: 1;           /* show content on hover for ALL cards */
+    transform: translateY(0);
+}
+
+/* Auto-placement sizing for mosaic */
+/* Default size: span 2 columns (3 cards per row on 6-col grid) */
+.Memories_wrapper .MemoriesCard{
+    grid-column: span 2;
+}
+
+/* Feature a few items with larger spans for a mosaic feel */
+.Memories_wrapper .MemoriesCard:nth-child(1){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.Memories_wrapper .MemoriesCard:nth-child(4){
+    grid-column: span 3;
+    grid-row: span 2;
+}
+.Memories_wrapper .MemoriesCard:nth-child(5){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .Memories_wrapper .MemoriesCard{ animation: none; opacity: 1; transform: none; }
+    .Memories_wrapper .MemoriesCard img{ transition: none; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px){
+    .Memories_wrapper{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .Memories_wrapper .MemoriesCard{
+        grid-column: span 1; /* simpler layout on medium screens */
+        grid-row: auto;
+    }
+}
+@media (max-width: 768px){
+    .Memories_wrapper{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .Memories_wrapper .MemoriesCard{
+        grid-column: span 1;
+        grid-row: auto;
+    }
+}
+@media (max-width: 480px){
+    .Memories_wrapper{
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
