@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom'
 import navCSS from './../Nav/Nav.module.css'
 
 function Nav() {
@@ -12,26 +13,26 @@ function Nav() {
     return (
         <div className={navCSS.Nav_wrapper}>
             <div className={navCSS.logo}>
-                <a href="#">Patel travel</a>
+                <Link to="/">Patel travel</Link>
             </div>
             <ul ref={menu}> 
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Trips</a></li>
-                <li><a href="#">Destination</a></li>
-                <li><a href="#">Searches</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Popular Place</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/tours">Trips</Link></li>
+                <li><Link to="/">Destination</Link></li>
+                <li><Link to="/">Searches</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/details">Popular Place</Link></li>
             </ul>
             <div className={navCSS.nav_btns}>
                 <div className={navCSS.search_wrapper}>
-                    <i class="ri-search-line"></i>
+                    <i className="ri-search-line"></i>
                     <input type="text" placeholder='search here' />
                 </div>
                 <div className={navCSS.CallBtn}>
-                    <i class="ri-phone-line"></i>
+                    <i className="ri-phone-line"></i>
                   <p>+91 9876543212 <small>call your travel agent</small></p>
                 </div>
-                <i class="ri-menu-2-line" onClick={MenuHandler} id={navCSS.bars}></i>
+                <i className="ri-menu-2-line" onClick={MenuHandler} id={navCSS.bars}></i>
             </div>
         </div>
     )

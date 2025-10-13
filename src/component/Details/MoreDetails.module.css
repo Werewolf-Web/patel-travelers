@@ -1,0 +1,133 @@
+.moreDetails {
+  background: #fdf6ed;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.headerBlock {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  color: #2b2b2b;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e67e22;
+}
+
+.headerBlock h2 {
+  font-size: clamp(28px, 4.2vw, 48px);
+  line-height: 1.18;
+  font-weight: 800;
+}
+
+.headerBlock p {
+  font-size: 16px;
+  color: #5a5a5a;
+  line-height: 1.7;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(230, 126, 34, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.cardContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardContent h3 {
+  font-size: 22px;
+  color: #2c3e50;
+}
+
+.cardContent p {
+  font-size: 15px;
+  color: #566573;
+  line-height: 1.6;
+}
+
+.cardContent button {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 10px 22px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.cardContent button:hover {
+  transform: translateY(-3px);
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.stepItem {
+  background: #fff7f1;
+  border-radius: 18px;
+  padding: 18px 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: inset 0 0 0 1px rgba(243, 156, 18, 0.2);
+}
+
+.stepItem span {
+  font-size: 26px;
+  font-weight: 800;
+  color: #e67e22;
+}
+
+.stepItem h4 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.stepItem p {
+  font-size: 14px;
+  color: #616a6b;
+}
+
+@media (max-width: 768px) {
+  .card img {
+    height: 180px;
+  }
+
+  .cardContent {
+    padding: 20px;
+  }
+}
